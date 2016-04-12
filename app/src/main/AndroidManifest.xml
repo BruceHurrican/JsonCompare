@@ -30,7 +30,10 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
+<<<<<<< HEAD
         android:name=".JsonApplication"
+=======
+>>>>>>> 9b11bc582e7c60b4d2fcd93d4a1cc8e667c72756
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
