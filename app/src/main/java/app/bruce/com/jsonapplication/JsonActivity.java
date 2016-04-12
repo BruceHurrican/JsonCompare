@@ -26,26 +26,15 @@
 package app.bruce.com.jsonapplication;
 
 import android.os.Bundle;
-<<<<<<< HEAD
-=======
-import android.support.v7.app.AppCompatActivity;
->>>>>>> 9b11bc582e7c60b4d2fcd93d4a1cc8e667c72756
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-<<<<<<< HEAD
-=======
-import android.widget.Toast;
->>>>>>> 9b11bc582e7c60b4d2fcd93d4a1cc8e667c72756
 
 import com.alibaba.fastjson.JSON;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
-<<<<<<< HEAD
 import com.bruceutils.base.BaseActivity;
-=======
->>>>>>> 9b11bc582e7c60b4d2fcd93d4a1cc8e667c72756
 import com.bruceutils.net.volley.TempStringRequest;
 import com.bruceutils.net.volley.VolleyRequestListener;
 import com.bruceutils.net.volley.VolleySingleton;
@@ -60,11 +49,7 @@ import java.lang.ref.WeakReference;
 /**
  * 比较JSON解析效率
  */
-<<<<<<< HEAD
 public class JsonActivity extends BaseActivity implements View.OnClickListener {
-=======
-public class JsonActivity extends AppCompatActivity implements View.OnClickListener {
->>>>>>> 9b11bc582e7c60b4d2fcd93d4a1cc8e667c72756
 
     private final int PARSE_TYPE_JSON = 0;
     private final int PARSE_TYPE_GSON = 1;
@@ -146,11 +131,7 @@ public class JsonActivity extends AppCompatActivity implements View.OnClickListe
             final String hooby = jsonObject.getString("hooby");
             endParseTime = System.currentTimeMillis();
             LogUtils.i("普通方式json解析耗时->" + (endParseTime - startParseTime) + "ms");
-<<<<<<< HEAD
             showToastShort("普通方式json解析耗时->" + (endParseTime - startParseTime) + "ms");
-=======
-            Toast.makeText(this, "普通方式json解析耗时->" + (endParseTime - startParseTime) + "ms", Toast.LENGTH_SHORT).show();
->>>>>>> 9b11bc582e7c60b4d2fcd93d4a1cc8e667c72756
             LogUtils.i("id->" + id + "\nname->" + name + "\nage->" + age + "\nhooby->" + hooby);
             tv_json_result.post(new Runnable() {
                 @Override
@@ -174,11 +155,7 @@ public class JsonActivity extends AppCompatActivity implements View.OnClickListe
         final Girl girl = gson.fromJson(result, Girl.class);
         endParseTime = System.currentTimeMillis();
         LogUtils.i("GSON解析耗时->" + (endParseTime - startParseTime) + "ms");
-<<<<<<< HEAD
         showToastShort("GSON解析耗时->" + (endParseTime - startParseTime) + "ms");
-=======
-        Toast.makeText(this, "GSON解析耗时->" + (endParseTime - startParseTime) + "ms", Toast.LENGTH_SHORT).show();
->>>>>>> 9b11bc582e7c60b4d2fcd93d4a1cc8e667c72756
         tv_json_result.post(new Runnable() {
             @Override
             public void run() {
@@ -193,11 +170,7 @@ public class JsonActivity extends AppCompatActivity implements View.OnClickListe
         final Girl girl = JSON.parseObject(result, Girl.class);
         endParseTime = System.currentTimeMillis();
         LogUtils.i("fastjson解析耗时->" + (endParseTime - startParseTime) + "ms");
-<<<<<<< HEAD
         showToastShort("fastjson解析耗时->" + (endParseTime - startParseTime) + "ms");
-=======
-        Toast.makeText(this, "fastjson解析耗时->" + (endParseTime - startParseTime) + "ms", Toast.LENGTH_SHORT).show();
->>>>>>> 9b11bc582e7c60b4d2fcd93d4a1cc8e667c72756
         tv_json_result.post(new Runnable() {
             @Override
             public void run() {
