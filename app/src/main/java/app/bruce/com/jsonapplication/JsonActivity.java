@@ -46,18 +46,26 @@ import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 /**
  * 比较JSON解析效率
  */
-public class JsonActivity extends BaseActivity implements View.OnClickListener {
+public class JsonActivity extends BaseActivity {
 
     private final int PARSE_TYPE_JSON = 0;
     private final int PARSE_TYPE_GSON = 1;
     private final int PARSE_TYPE_FAST_JSON = 2;
-    private Button btn_json_normal;
-    private Button btn_json_gson;
-    private Button btn_json_fast_json;
-    private TextView tv_json_result;
+    @Bind(R.id.btn_json_normal)
+    Button btn_json_normal;
+    @Bind(R.id.btn_json_gson)
+    Button btn_json_gson;
+    @Bind(R.id.btn_json_fast_json)
+    Button btn_json_fast_json;
+    @Bind(R.id.btn_json_result)
+    TextView tv_json_result;
     private String jsonTag = "jsonTag";
     private long startParseTime, endParseTime;
 
@@ -65,21 +73,11 @@ public class JsonActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_json);
-        initView();
+        ButterKnife.bind(this);
     }
 
-    private void initView() {
-        btn_json_normal = (Button) findViewById(R.id.btn_json_normal);
-        btn_json_gson = (Button) findViewById(R.id.btn_json_gson);
-        btn_json_fast_json = (Button) findViewById(R.id.btn_json_fast_json);
-        tv_json_result = (TextView) findViewById(R.id.btn_json_result);
 
-        btn_json_normal.setOnClickListener(this);
-        btn_json_gson.setOnClickListener(this);
-        btn_json_fast_json.setOnClickListener(this);
-    }
-
-    @Override
+    @OnClick({R.id.btn_json_normal, R.id.btn_json_gson, R.id.btn_json_fast_json})
     public void onClick(View v) {
         if (TextUtils.isEmpty(jsonTag)) {
             VolleySingleton.getInstance(JsonActivity.this.getApplicationContext()).getRequestQueue().cancelAll(jsonTag);
@@ -106,6 +104,12 @@ public class JsonActivity extends BaseActivity implements View.OnClickListener {
                 VolleySingleton.getInstance(JsonActivity.this.getApplicationContext()).addToRequestQueue(stringRequest);
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        ButterKnife.unbind(this);
+        super.onDestroy();
     }
 
     @Override
